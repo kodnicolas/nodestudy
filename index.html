@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./main.css"> -->
+    <!-- <script src="./mian.js"></script> -->
+    <script src="./jquery.js"></script>
+</head>
+<body>
+    <h1>首页</h1>
+    <div class="hob"></div>
+    <!-- 注意在浏览器中使用art-template,需要引用template-web.js文件 -->
+    <script src="./code/node_modules/art-template/lib/template-web.js"></script>
+    <!-- 浏览器当成js去解析,注意一点的是id不要忘记写，数据对象一定要加{{}},如果遇见数组的话,循环遍历，可以使用{{each 对象名字}}{{$value}}{{/each}}
+        模板引擎不关心你的字符串内容，只关心自己能认识的模板标记语法，例如{{}}，被称之为八字胡语法
+    -->
+    <script type="text/html" id="test1">
+        <h1><%=header%></h1>
+    </script>
+    <script>
+        // 第一个参数是id，做哪个script连接，第二个就可以是参数
+        var data={
+            header : 'your study list',
+            tag : ['算法导论','linq','c#','jquery','django','python']
+        }
+        var ret=template.render('test1',data)
+        $('h1').html(ret)
+        // console.log(ret);
+    </script>
+</body>
+</html>

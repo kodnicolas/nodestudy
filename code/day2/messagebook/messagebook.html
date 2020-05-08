@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 这时候，在服务端中，文件中的路径就不要去写相对路径了，因为这个时候所有的资源都是通过url标识来获取的
+    服务开放了/public/目录
+    所以这里的路径都加上了/public/,不要再想文件路径了，要想象成url地址
+    -->
+    <script src="/public/lib/jquery.js"></script>
+    <script src="public/lib/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/public/lib/css/bootstrap.css">
+</head>
+<body>
+    <!-- 浏览器收到html响应内容之后，就要开始从上到下依次解析
+    ，当在解析过程中，如果发现：
+    link\script\iframe\img\audio\video\
+    等具有href或者src的时候，属性标签的时候浏览器会自动对这些静态资源发起新的请求
+     -->
+    <div class="container">
+        <!-- <img src="public/image/a.jpg" alt=""> -->
+        <div class="page-header">
+            <h1>留言本<small>请发表你的留言</small></h1>
+            
+            <a  class="btn btn-primary" href="/post">发表留言</a>
+            <!-- 服务器设置请求路径是/post所以这里的路径直接post就行 -->
+          </div>
+          
+          <div class="container">
+              
+              <ul class="list-group">
+                  {{each comment}}
+                    <li class="list-group-item">{{$value.name}}说：‘{{$value.content}}’<span class="pull-right">时间：{{$value.time}}</span></li>
+                  {{/each comment}}
+              </ul>
+              
+          </div>
+        
+    </div>
+    
+</body>
+<script>
+    $('a').click(function(){
+        console.log(1);
+        
+    })
+</script>
+</html>
